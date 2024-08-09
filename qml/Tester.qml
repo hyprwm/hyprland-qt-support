@@ -240,7 +240,7 @@ ApplicationWindow {
                 }
 
                 SettingsCategory {
-                    _TEXT: "General"
+                    _TEXT: "Checkboxes"
                     Layout.fillWidth: true
                     Layout.preferredHeight: __gridColumn1.height
 
@@ -304,7 +304,7 @@ ApplicationWindow {
                 }
 
                 SettingsCategory {
-                    _TEXT: "Other General"
+                    _TEXT: "Sliders"
                     Layout.fillWidth: true
                     Layout.preferredHeight: __gridColumn2.height
 
@@ -320,23 +320,32 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
 
-                        CheckboxValue {
-                            _TEXT: "Hyprlanding"
-                            _CHECKED: true
+                        SliderValue {
+                            _TEXT: "Integer"
                             Layout.fillWidth: true
                             Layout.preferredHeight: childrenRect.height
                         }
 
-                        CheckboxValue {
-                            _TEXT: "Swaying"
-                            _CHECKED: false
+                        SliderValue {
+                            _TEXT: "Float"
+                            _MIN: -1
+                            _MAX: 1
+                            _CURRENT: 0
+                            _DISPLAY_FN: (value) => {
+                                return parseInt(value * 10) / 10;
+                            }
                             Layout.fillWidth: true
                             Layout.preferredHeight: childrenRect.height
                         }
 
-                        CheckboxValue {
-                            _TEXT: "Testing"
-                            _CHECKED: false
+                        SliderValue {
+                            _TEXT: "Percentage"
+                            _MIN: 0
+                            _MAX: 1
+                            _CURRENT: 0.5
+                            _DISPLAY_FN: (value) => {
+                                return parseInt(value * 100) + "%";
+                            }
                             Layout.fillWidth: true
                             Layout.preferredHeight: childrenRect.height
                         }
@@ -352,7 +361,7 @@ ApplicationWindow {
                 }
 
                 SettingsCategory {
-                    _TEXT: "Test 2"
+                    _TEXT: "Combos"
                     Layout.fillWidth: true
                     Layout.preferredHeight: __gridColumn3.height
 
@@ -368,9 +377,16 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
 
-                        CheckboxValue {
-                            _TEXT: "Hyprlanding"
-                            _CHECKED: true
+                        ComboValue {
+                            _TEXT: "Compositor"
+                            _MODEL: ["Hyprland", "sway", "Wayfire"]
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: childrenRect.height
+                        }
+
+                        ComboValue {
+                            _TEXT: "Style"
+                            _MODEL: ["Cool", "uncool", "Windows"]
                             Layout.fillWidth: true
                             Layout.preferredHeight: childrenRect.height
                         }
@@ -386,7 +402,7 @@ ApplicationWindow {
                 }
 
                 SettingsCategory {
-                    _TEXT: "Test 1337"
+                    _TEXT: "Spins"
                     Layout.fillWidth: true
                     Layout.preferredHeight: __gridColumn4.height
 
@@ -402,9 +418,72 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
 
-                        CheckboxValue {
-                            _TEXT: "Hyprlanding"
-                            _CHECKED: true
+                        SpinValue {
+                            _TEXT: "Mode"
+                            _CURRENT: 2
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: childrenRect.height
+                        }
+
+                        SpinValue {
+                            _TEXT: "Type"
+                            _CURRENT: 1
+                            _MAX: 10
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: childrenRect.height
+                        }
+
+                        SpinValue {
+                            _TEXT: "Gangsta"
+                            _CURRENT: 2
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: childrenRect.height
+                        }
+
+                        Rectangle {
+                            color: "#00000000"
+                            Layout.preferredHeight: 6
+                            Layout.fillWidth: true
+                        }
+
+                    }
+
+                }
+
+                SettingsCategory {
+                    _TEXT: "Textboxes"
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: __gridColumn5.height
+
+                    ColumnLayout {
+                        id: __gridColumn5
+
+                        spacing: 2
+                        width: parent.width
+
+                        Rectangle {
+                            color: "#00000000"
+                            Layout.preferredHeight: 6
+                            Layout.fillWidth: true
+                        }
+
+                        ShortTextValue {
+                            _TEXT: "Web"
+                            _CURRENT: "Anonymous"
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: childrenRect.height
+                        }
+
+                        ShortTextValue {
+                            _TEXT: "IP"
+                            _CURRENT: "192.168.1.1"
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: childrenRect.height
+                        }
+
+                        ShortTextValue {
+                            _TEXT: "Mother name"
+                            _CURRENT: "Dog"
                             Layout.fillWidth: true
                             Layout.preferredHeight: childrenRect.height
                         }
