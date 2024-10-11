@@ -183,7 +183,7 @@ ApplicationWindow {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.margins: _PADDING_SIDE * 1.5
+            Layout.margins: Math.floor(_PADDING_SIDE * 1.5)
             color: system.base
             radius: _SIDEBAR_RADIUS
 
