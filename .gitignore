@@ -1,0 +1,8 @@
+# build
+/build
+/result
+compile_commands.json
+
+# direnv
+/.direnv
+/.envrc
