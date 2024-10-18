@@ -5,3 +5,5 @@ qt_add_qml_module(hyprland-quick-style
     QML_FILES
         Button.qml
 )
+
+install_qml_module(hyprland-quick-style)

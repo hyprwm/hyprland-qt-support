@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 include(GNUInstallDirs)
+include(cmake/install-qml-module.cmake)
 
 # Get version
 file(READ "${CMAKE_SOURCE_DIR}/VERSION" VER_RAW)
