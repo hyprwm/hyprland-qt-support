@@ -14,3 +14,5 @@ find_package(Qt6 6.6 REQUIRED COMPONENTS Qml Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.6)
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
+
+add_subdirectory(src)
