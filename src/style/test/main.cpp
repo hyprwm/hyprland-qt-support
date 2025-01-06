@@ -10,7 +10,11 @@ int main(int argc, char** argv) {
     QQuickStyle::setStyle("org.hyprland.style");
 
     QQmlApplicationEngine engine;
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed, &app, []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
+
+    QObject::connect(
+        &engine, &QQmlApplicationEngine::objectCreationFailed, &app,
+        []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
+
     engine.load("qrc:/qt/qml/org/hyprland/style/test/main.qml");
 
     return QGuiApplication::exec();

@@ -8,7 +8,4 @@ qt_add_qml_module(style-test
         main.qml
 )
 
-target_link_libraries(style-test PRIVATE
-    Qt::Quick Qt::QuickControls2
-    hyprland-quick-style
-)
+target_link_libraries(style-test PRIVATE Qt::Quick Qt::QuickControls2)
