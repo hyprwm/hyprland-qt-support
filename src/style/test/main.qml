@@ -5,6 +5,7 @@ import QtQuick.Controls
 import org.hyprland.style.impl
 
 ApplicationWindow {
+    id: window
     visible: true
 
     ScrollView {
@@ -62,6 +63,55 @@ ApplicationWindow {
 
             RowLayout {
                 ColumnLayout {
+                    Layout.maximumWidth: 300
+                    Label { text: "Palette" }
+
+                    SystemPalette { id: activePalette; colorGroup: SystemPalette.Active }
+                    SystemPalette { id: inactivePalette; colorGroup: SystemPalette.Inactive }
+                    SystemPalette { id: disabledPalette; colorGroup: SystemPalette.Disabled }
+
+                    component PaletteColor: Rectangle {
+                        required property string name;
+                        required property var cg;
+                        implicitWidth: 50
+                        implicitHeight: 20
+                        color: cg[name]
+                    }
+
+                    component PaletteItem: RowLayout {
+                        id: pi
+
+                        property alias text: label.text
+                        property string color;
+
+                        Label {
+                            id: label
+                            Layout.fillWidth: true
+                        }
+
+                        PaletteColor { name: pi.color; cg: activePalette }
+                        PaletteColor { name: pi.color; cg: inactivePalette }
+                        PaletteColor { name: pi.color; cg: disabledPalette }
+                    }
+
+                    PaletteItem { text: "Light"; color: "light" }
+                    PaletteItem { text: "Midlight"; color: "midlight" }
+                    PaletteItem { text: "Button"; color: "button" }
+                    PaletteItem { text: "Window"; color: "window" }
+                    PaletteItem { text: "Mid"; color: "mid" }
+                    PaletteItem { text: "Dark"; color: "dark" }
+                    PaletteItem { text: "Base"; color: "base" }
+                    PaletteItem { text: "Text"; color: "text" }
+                    PaletteItem { text: "Button Text"; color: "buttonText" }
+                    PaletteItem { text: "Window Text"; color: "windowText" }
+                    PaletteItem { text: "Highli Text"; color: "highlightedText" }
+                    PaletteItem { text: "Placeholder"; color: "placeholderText" }
+                    PaletteItem { text: "Shadow"; color: "shadow" }
+                    PaletteItem { text: "Highlight"; color: "highlight" }
+                    PaletteItem { text: "Accent"; color: "accent" }
+                }
+
+                ColumnLayout {
                     Layout.maximumWidth: 200
                     Label { text: "Button" }
 
@@ -71,10 +121,13 @@ ApplicationWindow {
                     TestButton { text: "Flat"; flat: true; }
                     TestButton { text: "Highlighted"; highlighted: true }
                     TestButton { text: "Flat Highlighted"; flat: true; highlighted: true }
-                    TestButton { text: "Checked"; checked: true }
-                    TestButton { text: "Flat Checked"; flat: true; checked: true }
+                    TestButton { text: "Checked"; checkable: true; checked: true }
+                    TestButton { text: "Flat Checked"; flat: true; checkable: true; checked: true }
                     TestButton { text: "Down"; down: true }
                     TestButton { text: "Flat Down"; flat: true; down: true }
+                    TestButton { text: "Disabled"; enabled: false }
+                    TestButton { text: "With Icon"; icon.name: "folder" }
+                    TestButton { icon.name: "folder" }
                 }
 
                 Item { Layout.fillWidth: true }

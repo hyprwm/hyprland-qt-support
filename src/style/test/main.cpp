@@ -2,12 +2,15 @@
 #include <qguiapplication.h>
 #include <qqmlapplicationengine.h>
 #include <qquickstyle.h>
+#include <qtenvironmentvariables.h>
 
 int main(int argc, char** argv) {
     auto app = QGuiApplication(argc, argv);
 
     QGuiApplication::setApplicationName("Hyprland style gallery");
-    QQuickStyle::setStyle("org.hyprland.style");
+
+    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE"))
+        QQuickStyle::setStyle("org.hyprland.style");
 
     QQmlApplicationEngine engine;
 
