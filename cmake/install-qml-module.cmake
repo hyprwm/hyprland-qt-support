@@ -1,9 +1,27 @@
-set(INSTALL_QMLDIR "${CMAKE_INSTALL_LIBDIR}/qt-6/qml")
+set(INSTALL_QMLDIR "" CACHE STRING "QML install dir")
+set(INSTALL_QML_PREFIX "" CACHE STRING "QML install prefix")
+
+# There doesn't seem to be a standard cross-distro qml install path.
+if ("${INSTALL_QMLDIR}" STREQUAL "" AND "${INSTALL_QML_PREFIX}" STREQUAL "")
+    message(WARNING "Neither INSTALL_QMLDIR nor INSTALL_QML_PREFIX is set. QML modules will not be installed.")
+else()
+    if ("${INSTALL_QMLDIR}" STREQUAL "")
+        set(QML_FULL_INSTALLDIR "${CMAKE_INSTALL_PREFIX}/${INSTALL_QML_PREFIX}")
+    else()
+        set(QML_FULL_INSTALLDIR "${INSTALL_QMLDIR}")
+    endif()
+
+    message(STATUS "QML install dir: ${QML_FULL_INSTALLDIR}")
+endif()
 
 # Install a given target as a QML module. This is mostly pulled from ECM, as there does not seem
 # to be an official way to do it.
 # see https://github.com/KDE/extra-cmake-modules/blob/fe0f606bf7f222e36f7560fd7a2c33ef993e23bb/modules/ECMQmlModule6.cmake#L160
 function(install_qml_module arg_TARGET)
+	if (NOT DEFINED QML_FULL_INSTALLDIR)
+		return()
+	endif()
+
     qt_query_qml_module(${arg_TARGET}
         URI module_uri
         VERSION module_version
@@ -15,17 +33,17 @@ function(install_qml_module arg_TARGET)
         RESOURCES module_resources
     )
 
-    set(module_dir "${INSTALL_QMLDIR}/${module_target_path}")
+    set(module_dir "${QML_FULL_INSTALLDIR}/${module_target_path}")
 
     if (NOT TARGET "${module_plugin_target}")
         message(FATAL_ERROR "install_qml_modules called for a target without a plugin")
     endif()
 
-    install(
-        TARGETS "${arg_TARGET}"
-        LIBRARY DESTINATION "${module_dir}"
-        RUNTIME DESTINATION "${module_dir}"
-    )
+    # Install the target to /lib instead of the qml module dir.
+    # If installed to the module dir, inter-module dependencies will not work
+    # due to broken rpaths. The standard fix for this seems to be to just
+    # put the library in /lib.
+    install(TARGETS "${arg_TARGET}")
 
     install(
         TARGETS "${module_plugin_target}"

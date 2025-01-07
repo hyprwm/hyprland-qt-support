@@ -21,4 +21,6 @@ target_link_libraries(hyprland-quick-style PRIVATE hyprland-quick-style-impl)
 
 install_qml_module(hyprland-quick-style)
 
-add_subdirectory(test)
+if (BUILD_TESTER)
+    add_subdirectory(test)
+endif()

@@ -28,6 +28,10 @@ in stdenv.mkDerivation {
     qt6.qtwayland
   ];
 
+  cmakeFlags = [
+    (lib.cmakeFeature "INSTALL_QML_PREFIX" qt6.qtbase.qtQmlPrefix)
+  ];
+
   meta = {
     description = "hyprland-qt-support";
     homepage = "https://github.com/hyprwm/hyprland-qt-support";
