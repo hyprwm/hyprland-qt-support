@@ -8,7 +8,8 @@ indent_style = space
 indent_size = 4
 
 [*.qml,*.nix]
-indent_size = 2
+indent_size = 4
+indent_style = space
 
 [Makefile]
 indent_style = tab

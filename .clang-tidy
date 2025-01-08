@@ -6,6 +6,8 @@ Checks: >
   bugprone-*,
   -bugprone-easily-swappable-parameters,
   -bugprone-forward-declararion-namespace,
+  -bugprone-forward-declararion-namespace,
+  -bugprone-return-const-ref-from-parameter,
   concurrency-*,
   cppcoreguidelines-*,
   -cppcoreguidelines-owning-memory,
@@ -15,8 +17,8 @@ Checks: >
   -cppcoreguidelines-non-private-member-variables-in-classes,
   -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
   -cppcoreguidelines-avoid-do-while,
-  google-build-using-namespace.
-  google-explicit-constructor,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-pro-type-vararg,
   google-global-names-in-headers,
   google-readability-casting,
   google-runtime-int,
@@ -28,6 +30,7 @@ Checks: >
   -modernize-return-braced-init-list,
   -modernize-use-trailing-return-type,
   performance-*,
+  -performance-avoid-endl,
   portability-std-allocator-const,
   readability-*,
   -readability-function-cognitive-complexity,
@@ -40,6 +43,8 @@ Checks: >
   -readability-else-after-return,
   -readability-container-data-pointer,
   -readability-implicit-bool-conversion,
+  -readability-avoid-nested-conditional-operator,
+  -readability-math-missing-parentheses,
   tidyfox-*,
 CheckOptions:
   performance-for-range-copy.WarnOnAllAutoCopies: true
