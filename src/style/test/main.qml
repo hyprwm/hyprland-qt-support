@@ -152,7 +152,7 @@ ApplicationWindow {
                     TestField { text: "Normal" }
                     TestField { text: "Disabled"; enabled: false }
                     TestField { placeholderText: "Placeholder" }
-                    TestField { placeholderText: "Placeholder"; enabled: false }
+                    TestField { placeholderText: "Disabled Placeholder"; enabled: false }
                     Item { Layout.fillHeight: true }
                 }
 

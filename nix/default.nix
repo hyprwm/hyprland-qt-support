@@ -6,6 +6,8 @@
   cmake,
   ninja,
   qt6,
+  pkg-config,
+  hyprlang,
   version ? "0",
 }: let
   inherit (lib.strings) makeBinPath;
@@ -26,6 +28,8 @@ in stdenv.mkDerivation {
     qt6.qtdeclarative
     qt6.qtsvg
     qt6.qtwayland
+    pkg-config
+    hyprlang
   ];
 
   cmakeFlags = [

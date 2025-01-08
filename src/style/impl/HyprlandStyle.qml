@@ -1,12 +1,8 @@
 pragma Singleton
 import QtQuick
 
-QtObject {
+HyprlandStyleBase {
     id: root
-
-    property int roundness: 1
-    property int borderWidth: 1
-    property bool reduceMotion: false
 
     function flat(color: color, flat: bool): color {
         return flat ? root.transparent(color) : color;
