@@ -6,7 +6,7 @@ A qt6 qml style provider for hypr* apps.
 
 You can build it with this command:
 ```sh
-cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DINSTALL_QML_PREFIX=/lib/qt6/qml -S . -B ./build
+cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINSTALL_QML_PREFIX=/lib/qt6/qml -S . -B ./build
 cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
 ```
 
