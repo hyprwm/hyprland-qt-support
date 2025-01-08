@@ -63,5 +63,15 @@ T.Button {
             const base = HyprlandStyle.flat(HyprlandStyle.lightenOrDarken(control.palette.button, 1.4), control.flat);
             return HyprlandStyle.overlay(base, control.palette.highlight, highlightTint);
         }
+
+        Rectangle {
+            anchors.fill: parent
+            anchors.margins: -1
+            radius: parent.radius + 1
+            color: "transparent"
+
+            MotionBehavior on border.color { ColorAnimation { duration: 60 } }
+            border.color: control.visualFocus ? Qt.alpha(control.palette.highlight, 0.8) : "transparent"
+        }
     }
 }

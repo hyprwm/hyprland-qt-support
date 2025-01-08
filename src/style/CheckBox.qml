@@ -30,7 +30,7 @@ T.CheckBox {
         implicitHeight: 16
 
         x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
-        y: Math.round(control.topPadding + (control.availableHeight - height) / 2)
+        y: Math.floor(control.topPadding + (control.availableHeight - height) / 2)
 
         radius: {
             switch (HyprlandStyle.roundness) {
@@ -64,6 +64,16 @@ T.CheckBox {
             anchors.margins: 2
             checkState: control.checkState
             color: control.palette.buttonText
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            anchors.margins: -1
+            radius: parent.radius + 1
+            color: "transparent"
+
+            MotionBehavior on border.color { ColorAnimation { duration: 60 } }
+            border.color: control.visualFocus ? Qt.alpha(control.palette.highlight, 0.8) : "transparent"
         }
     }
 }
