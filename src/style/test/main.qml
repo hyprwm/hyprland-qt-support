@@ -143,6 +143,19 @@ ApplicationWindow {
                     Item { Layout.fillHeight: true }
                 }
 
+                ColumnLayout {
+                    Layout.maximumWidth: 200
+                    Label { text: "TextField" }
+
+                    component TestField: TextField { Layout.fillWidth: true }
+
+                    TestField { text: "Normal" }
+                    TestField { text: "Disabled"; enabled: false }
+                    TestField { placeholderText: "Placeholder" }
+                    TestField { placeholderText: "Placeholder"; enabled: false }
+                    Item { Layout.fillHeight: true }
+                }
+
                 Item { Layout.fillWidth: true }
             }
         }

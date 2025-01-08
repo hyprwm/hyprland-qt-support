@@ -13,6 +13,7 @@ qt_add_qml_module(hyprland-quick-style SHARED
     QML_FILES
         Button.qml
         CheckBox.qml
+        TextField.qml
 )
 
 target_sources(hyprland-quick-styleplugin PRIVATE plugin.cpp)
