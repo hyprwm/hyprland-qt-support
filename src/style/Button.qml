@@ -34,7 +34,15 @@ T.Button {
         implicitWidth: 50
         implicitHeight: 30
 
-        radius: HyprlandStyle.radius
+        radius: {
+            switch (HyprlandStyle.roundness) {
+            case 0: return 0;
+            case 1: return 4;
+            case 2: return 8;
+            case 3: return 16;
+            }
+        }
+
         border.width: HyprlandStyle.borderWidth
 
         MotionBehavior on color { ColorAnimation { duration: 60 } }
@@ -50,10 +58,7 @@ T.Button {
 
         MotionBehavior on border.color { ColorAnimation { duration: 60 } }
         border.color: {
-            let highlightTint = control.down || control.checked ? 0.8 : (control.enabled && control.hovered) || control.highlighted ? 0.6 : 0.0;
-
-            if (control.flat && highlightTint)
-                highlightTint += 0.2;
+            let highlightTint = control.down || control.checked ? 1.0 : (control.enabled && control.hovered) || control.highlighted ? control.flat ? 0.8 : 0.6 : 0.0;
 
             const base = HyprlandStyle.flat(HyprlandStyle.lightenOrDarken(control.palette.button, 1.4), control.flat);
             return HyprlandStyle.overlay(base, control.palette.highlight, highlightTint);

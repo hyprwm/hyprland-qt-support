@@ -1,10 +1,11 @@
 #include <qguiapplication.h>
-#include <qlogging.h>
 #include <qqmlengine.h>
 #include <qqmlextensionplugin.h>
+#include <qqmlextensioninterface.h>
 #include <qtmetamacros.h>
 #include <qstylehints.h>
 #include <qtpreprocessorsupport.h>
+#include <qobject.h>
 
 void qml_register_types_org_hyprland_style(); // NOLINT
 

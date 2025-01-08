@@ -4,8 +4,8 @@ import QtQuick
 QtObject {
     id: root
 
-    property real borderWidth: 1
-    property real radius: 7
+    property int roundness: 1
+    property int borderWidth: 1
     property bool reduceMotion: false
 
     function flat(color: color, flat: bool): color {

@@ -12,6 +12,7 @@ qt_add_qml_module(hyprland-quick-style SHARED
         QtQuick.Controls.Basic
     QML_FILES
         Button.qml
+        CheckBox.qml
 )
 
 target_sources(hyprland-quick-styleplugin PRIVATE plugin.cpp)

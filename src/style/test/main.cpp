@@ -1,5 +1,7 @@
 #include <qcoreapplication.h>
 #include <qguiapplication.h>
+#include <qobject.h>
+#include <qnamespace.h>
 #include <qqmlapplicationengine.h>
 #include <qquickstyle.h>
 #include <qtenvironmentvariables.h>

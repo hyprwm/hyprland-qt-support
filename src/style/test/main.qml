@@ -29,25 +29,21 @@ ApplicationWindow {
                     }
                 }
 
-                SettingSlider {
-                    text: "Radius"
-                    from: 0
-                    to: 30
+                ComboBox {
+                    model: ["Sharp", "Slightly Round", "Round", "Very Round"]
 
                     Component.onCompleted: {
-                        this.value = HyprlandStyle.radius
-                        HyprlandStyle.radius = Qt.binding(() => this.value)
+                        this.currentIndex = HyprlandStyle.roundness;
+                        HyprlandStyle.roundness = Qt.binding(() => this.currentIndex);
                     }
                 }
 
-                SettingSlider {
-                    text: "Border width"
-                    from: 0
-                    to: 5
+                ComboBox {
+                    model: ["No Border", "Thin", "Thick"]
 
                     Component.onCompleted: {
-                        this.value = HyprlandStyle.borderWidth
-                        HyprlandStyle.borderWidth = Qt.binding(() => this.value)
+                        this.currentIndex = HyprlandStyle.borderWidth;
+                        HyprlandStyle.borderWidth = Qt.binding(() => this.currentIndex);
                     }
                 }
 
@@ -127,7 +123,24 @@ ApplicationWindow {
                     TestButton { text: "Flat Down"; flat: true; down: true }
                     TestButton { text: "Disabled"; enabled: false }
                     TestButton { text: "With Icon"; icon.name: "folder" }
+                    TestButton { text: "With Mirror Icon"; icon.name: "folder"; LayoutMirroring.enabled: true }
                     TestButton { icon.name: "folder" }
+                    Item { Layout.fillHeight: true }
+                }
+
+                ColumnLayout {
+                    Layout.maximumWidth: 200
+                    Label { text: "CheckBox" }
+
+                    component TestCB: CheckBox { Layout.fillWidth: true }
+
+                    TestCB { text: "Normal" }
+                    TestCB { text: "Down"; down: true }
+                    TestCB { text: "Mirrored"; LayoutMirroring.enabled: true }
+                    TestCB { text: "Checked"; checked: true }
+                    TestCB { text: "Partially Checked"; tristate: true; checkState: Qt.PartiallyChecked }
+                    TestCB { text: "Disabled"; enabled: false }
+                    Item { Layout.fillHeight: true }
                 }
 
                 Item { Layout.fillWidth: true }
