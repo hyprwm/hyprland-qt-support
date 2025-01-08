@@ -72,7 +72,7 @@ namespace hyprqml::style {
             roundness    = std::any_cast<Hyprlang::INT>(config.getConfigValue("roundness"));
             borderWidth  = std::any_cast<Hyprlang::INT>(config.getConfigValue("border_width"));
             reduceMotion = std::any_cast<Hyprlang::INT>(config.getConfigValue("reduce_motion"));
-        } catch (...) { return; }
+        } catch (...) {} // NOLINT
 
         if (roundness < 0 || roundness > 3) {
             qCWarning(logStyle) << "Invalid value" << roundness
