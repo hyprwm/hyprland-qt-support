@@ -20,6 +20,7 @@ in stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ninja
+    pkg-config
     qt6.wrapQtAppsHook
   ];
 
@@ -28,7 +29,6 @@ in stdenv.mkDerivation {
     qt6.qtdeclarative
     qt6.qtsvg
     qt6.qtwayland
-    pkg-config
     hyprlang
   ];
 
