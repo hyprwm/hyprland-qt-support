@@ -14,6 +14,7 @@ in {
   default = self.overlays.hyprland-qt-support;
 
   hyprland-qt-support = lib.composeManyExtensions [
+    inputs.hyprlang.overlays.default
     (final: prev: {
       hyprland-qt-support = final.callPackage ./. {
         version = "${version}+date=${date}_${self.shortRev or "dirty"}";

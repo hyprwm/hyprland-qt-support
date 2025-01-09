@@ -2,16 +2,14 @@
   lib,
   nix-gitignore,
   stdenv,
-
   cmake,
   ninja,
   qt6,
   pkg-config,
   hyprlang,
   version ? "0",
-}: let
-  inherit (lib.strings) makeBinPath;
-in stdenv.mkDerivation {
+}:
+stdenv.mkDerivation {
   pname = "hyprland-qt-support";
   inherit version;
 

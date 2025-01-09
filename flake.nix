@@ -4,6 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
+
+    hyprlang = {
+      url = "github:hyprwm/hyprlang";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
   };
 
   outputs = {
@@ -22,7 +28,7 @@
         }
     );
   in {
-    overlays = import ./nix/overlays.nix { inherit inputs self lib; };
+    overlays = import ./nix/overlays.nix {inherit inputs self lib;};
 
     packages = eachSystem (system: {
       default = self.packages.${system}.hyprland-qt-support;
