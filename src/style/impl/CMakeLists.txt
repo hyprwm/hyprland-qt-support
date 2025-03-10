@@ -13,6 +13,6 @@ qt_add_qml_module(hyprland-quick-style-impl
         MotionBehavior.qml
 )
 
-target_link_libraries(hyprland-quick-style-impl PRIVATE Qt::Quick hyprlang)
+target_link_libraries(hyprland-quick-style-impl PRIVATE Qt::Quick PkgConfig::hyprlang)
 
 install_qml_module(hyprland-quick-style-impl)
