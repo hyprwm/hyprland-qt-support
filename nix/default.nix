@@ -1,6 +1,5 @@
 {
   lib,
-  nix-gitignore,
   stdenv,
   cmake,
   ninja,
@@ -8,12 +7,13 @@
   pkg-config,
   hyprlang,
   version ? "0",
+self,
 }:
 stdenv.mkDerivation {
   pname = "hyprland-qt-support";
   inherit version;
 
-  src = nix-gitignore.gitignoreSource [] ./..;
+  src = self;
 
   nativeBuildInputs = [
     cmake

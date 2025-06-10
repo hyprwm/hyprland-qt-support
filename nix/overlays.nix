@@ -19,6 +19,7 @@ in {
       hyprland-qt-support = final.callPackage ./. {
         stdenv = final.gcc15Stdenv;
         version = "${version}+date=${date}_${self.shortRev or "dirty"}";
+        inherit self;
       };
     })
   ];
