@@ -1,4 +1,4 @@
-# hyprland-qt-support
+## hyprland-qt-support
 
 A qt6 qml style provider for hypr* apps.
 
