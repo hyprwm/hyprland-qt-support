@@ -2,6 +2,11 @@
 
 A qt6 qml style provider for hypr* apps.
 
+## Configuration
+
+You will find configuration details for this and all other Hypr* tools in the wiki: 
+https://wiki.hypr.land/Hypr-Ecosystem/hyprland-qt-support/
+
 ## Building
 
 You can build it with this command:
