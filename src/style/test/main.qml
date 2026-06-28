@@ -57,6 +57,25 @@ ApplicationWindow {
                 }
             }
 
+            ColumnLayout {
+                Layout.fillWidth: true
+                Label { text: "ToolButton" }
+
+                RowLayout{
+                    spacing: 4
+                    ToolButton { text: "Normal" }
+                    ToolButton { text: "Flat"; flat: true }
+                    ToolButton { text: "Down"; down: true }
+                    ToolButton { text: "Checked"; checkable: true; checked: true }
+                    ToolButton { text: "Highlighted"; highlighted: true }
+                    ToolButton { text: "Disabled"; enabled: false }
+                    ToolButton { text: "Flat Down"; flat: true; down: true }
+                    ToolButton { text: "Flat Checked"; flat: true; checkable: true; checked: true }
+                    ToolButton { text: "Flat Highlighted"; flat: true; highlighted: true }
+                    ToolButton { icon.name: "folder" }
+                }
+            }
+
             RowLayout {
                 ColumnLayout {
                     Layout.maximumWidth: 300
